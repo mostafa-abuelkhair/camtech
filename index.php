@@ -76,13 +76,13 @@
 
         <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
           <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="{{$index}}" class="{{$index==0 ? 'active': ''}}" ng-repeat="x in [0,0,0,0] track by $index"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="{{$index}}" class="{{$index==0 ? 'active': ''}}" ng-repeat="x in bn track by $index"></li>
           </ol>
           <div class="carousel-inner" role="listbox">
 
-            <div class="carousel-item {{$index==0 ? 'active': ''}}" ng-repeat="x in [0,0,0,0] track by $index">
+            <div class="carousel-item {{$index==0 ? 'active': ''}}" ng-repeat="x in bn track by $index">
               <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="First slide">
-            {{$index}}
+            {{x.banner_img}}
             </div>
 
           </div>
@@ -98,15 +98,15 @@
 
         <div class="row">
 
-          <div class="col-lg-4 col-md-6 mb-4" ng-repeat="x in [0,0,0,0,0,0,0,0,0] track by $index">
+          <div class="col-lg-4 col-md-6 mb-4" ng-repeat="x in s.slice(snum,snum+sn) track by $index">
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="#">Item One</a>
+                  <a href="#">{{x.item_name}}</a>
                 </h4>
-                <h5>$24.99</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                <h5>${{x.price}}</h5>
+                <p class="card-text">{{x.description}}</p>
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
@@ -116,6 +116,11 @@
 
 
         </div>
+
+                  <ul class="pagination justify-content-center">
+                    <li class="page-item " ng-click="np(0)"><a class="page-link btn pointer"><</a></li>
+                    <li class="page-item " ng-click="np(1)"><a class="page-link btn pointer">></a></li>
+                  </ul>
         <!-- /.row -->
 
       </div>
