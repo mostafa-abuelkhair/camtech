@@ -1,3 +1,22 @@
+<?php
+
+$d=$_GET["p"];
+
+include 'db.php';
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+$result = $conn->query("SELECT * FROM systems where id = $d");
+if(!empty($result)){
+  $row = $result->fetch_assoc();
+}
+else{exit('PAGE NOT FOUND');}
+$p = json_encode($row)
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,14 +41,13 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
-  <script src="index.js"></script>
   <!-- Custom styles for this template -->
   <link href="index.css" rel="stylesheet">
 
 
 </head>
 
-<body>
+<body ng-app="app" ng-controller="ctrl">
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -66,14 +84,12 @@
 
         <div class="card mt-4">
           <div class="card-header" style="overflow:scroll;">
-                <img class="" style="margin:5px;" src="http://placehold.it/700x400" alt="">
-                <img class="" style="margin:5px;" src="http://placehold.it/300x400" alt="">
-                <img class="" style="margin:5px;" src="http://placehold.it/700x400" alt="">
+                <img class="" style="margin:5px;" src="http://placehold.it/700x400" ng-repeat="x in p.imgs track by $index" alt="">
           </div>
           <div class="card-body">
-            <h3 class="card-title">Product Name</h3>
-            <h4>$24.99</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
+            <h3 class="card-title">{{p.item_name}}</h3>
+            <h4>جنيه {{p.price}}</h4>
+            <p class="card-text">{{p.description}}</p>
             <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
             4.0 stars
           </div>
@@ -82,19 +98,11 @@
 
         <div class="card card-outline-secondary my-4">
           <div class="card-header">
-            Product Reviews
+            Product details
           </div>
           <div class="card-body">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-            <hr>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-            <hr>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-            <hr>
-            <a href="#" class="btn btn-success">Leave a Review</a>
+            <p>{{p.details}}</p>
+
           </div>
         </div>
         <!-- /.card -->
@@ -117,4 +125,22 @@
 
 </body>
 
+<script>
+
+var app = angular.module('app', []);
+
+app.run(function($rootScope) {
+
+
+});
+
+app.controller('ctrl', function($scope,$rootScope,$http) {
+
+<?php
+echo "\$scope.p=JSON.parse('$p');";
+?>
+
+});
+
+</script>
 </html>
