@@ -78,11 +78,11 @@
           <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="{{$index}}" class="{{$index==0 ? 'active': ''}}" ng-repeat="x in bn track by $index"></li>
           </ol>
-          <div class="carousel-inner" role="listbox">
+          <div class="carousel-inner caru" role="listbox">
 
-            <div class="carousel-item {{$index==0 ? 'active': ''}}" ng-repeat="x in bn track by $index">
-              <a href="item.php?p={{x.id}}"><img class="d-block img-fluid" src="http://placehold.it/900x350" alt="First slide"></a>
-            {{x.banner_img}}
+            <div class="carousel-item {{$index==0 ? 'active': ''}} " ng-repeat="x in bn track by $index">
+              <a href="item.php?p={{x.id}}"><img class="cimg" src="{{'uploads/'+x.banner_img}}"  alt=""></a>
+            
             </div>
 
           </div>

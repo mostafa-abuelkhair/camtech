@@ -1,6 +1,20 @@
 <?php
 
 $d=$_GET["p"];
+if($d){$edit=true;}
+
+if($edit){
+include 'db.php';
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+$result = $conn->query("SELECT * FROM systems where id = $d");
+if(!empty($result)){
+  $row = $result->fetch_assoc();
+}
+else{exit('PAGE NOT FOUND');}
+$p = json_encode($row);
+}
 
 ?>
 
@@ -32,6 +46,26 @@ $d=$_GET["p"];
   <!-- Custom styles for this template -->
   <link href="index.css" rel="stylesheet">
 
+<style>
+.rimg{width:100px;height:100px;}
+
+.wrapper {
+    position: relative;
+  display: inline-block;
+  border-style: solid;border-color:red;margin:5px;
+}
+.close:before {
+  content: '✕';
+}
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+</style>
+
 </head>
 
 <body  ng-app="app" ng-controller="ctrl">
@@ -53,7 +87,7 @@ $d=$_GET["p"];
       </div>
     </div>
   </nav>
-<form action="upload.php" method="post" enctype="multipart/form-data">
+<form action="upload.php?p=<?php echo $edit? $d:'new'  ?>" method="post" enctype="multipart/form-data">
 
 <div class="container">
   <div class="row">
@@ -64,6 +98,14 @@ $d=$_GET["p"];
           images
         </div>
           <div class="card-body">
+
+            <div>
+              <div class="wrapper" ng-repeat="x in imgs track by $index" ng-click="imgs.splice($index, 1);">
+                <img class="rimg" src="{{'uploads/'+x}}" alt="x" >
+                <span class="close"></span>
+              </div>
+            </div>
+
 
                 <div ng-repeat="x in imn track by $index" style="margin-bottom:15px;">
                   <input type="file" name="upload[]" />
@@ -77,23 +119,23 @@ $d=$_GET["p"];
           <div class="card-body">
 
             <div class="form-group">
-              <label for="usr">display image :</label>
+              <label for="usr"><?php echo $edit? 'replace the card image :' : 'card image :'  ?></label>
               <input type="file" name="upload2[]" />
             </div>
 
             <div class="form-group">
               <label for="usr">item name :</label>
-              <input type="text" class="form-control" name="item_name">
+              <input type="text" class="form-control" name="item_name" value="{{p.item_name}}">
             </div>
 
             <div class="form-group">
               <label for="usr">price :</label>
-              <input class="form-control" type="text" name="price">
+              <input class="form-control" type="text" name="price" value="{{p.price}}">
             </div>
 
           <div class="form-group">
             <label for="usr">item description :</label>
-            <textarea class="form-control" rows="5" name="description"></textarea>
+            <textarea class="form-control" rows="5" name="description">{{p.description}}</textarea>
           </div>
 
         </div>
@@ -109,13 +151,16 @@ $d=$_GET["p"];
 
             <div class="form-check">
               <label class="form-check-label">
-                <input type="checkbox" name="banner" class="form-check-input" >add to slider
+                <input type="checkbox" name="banner" class="form-check-input" ng-checked="p.banner=='1'? true:false">add to slider
               </label>
             </div>
 
-            <input type="file" class="form-control-file border" name="upload2[]">
-
           </div>
+
+          <div class="form-group">
+            <label for="usr"><?php echo $edit? 'replace the banner image :' : 'banner image :'  ?></label>
+            <input type="file" class="form-control-file border" name="upload2[]">
+        </div>
 
         </div>
       </div>
@@ -126,13 +171,13 @@ $d=$_GET["p"];
         </div>
         <div class="card-body">
 
-          <textarea class="form-control" rows="15" name="details"></textarea>
+          <textarea class="form-control" rows="15" name="details">{{p.details}}</textarea>
 
         </div>
       </div>
 
       <div class="col text-center">
-        <button type="submit" class="btn btn-outline-dark" style="width:30%">ok</button>
+        <button type="submit" class="btn btn-outline-dark" style="width:30%"><?php echo $edit? 'edit':'ok'; ?></button>
       </div>
 
 
@@ -167,12 +212,15 @@ app.run(function($rootScope) {
 app.controller('ctrl', function($scope,$rootScope,$http) {
 
 $scope.imgs=[];
-$scope.imn=[];
-
 
 <?php
-
+if($edit){
+echo "\$scope.p=JSON.parse('$p');";
+echo "\$scope.imgs=\$scope.p.imgs.split('-')";
+}
 ?>
+
+$scope.imn=[];
 
 });
 
