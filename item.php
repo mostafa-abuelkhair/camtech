@@ -84,7 +84,7 @@ $p = json_encode($row)
 
         <div class="card mt-4">
           <div class="card-header" style="overflow:scroll;">
-                <img class="" style="margin:5px;" src="http://placehold.it/700x400" ng-repeat="x in p.imgs track by $index" alt="">
+                <img class="" style="margin:5px;" src="{{'uploads/'+x}}" ng-repeat="x in p.imgs.split('-') track by $index" alt="">
           </div>
           <div class="card-body">
             <h3 class="card-title">{{p.item_name}}</h3>

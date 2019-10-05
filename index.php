@@ -100,7 +100,7 @@
 
           <div class="col-lg-4 col-md-6 mb-4" ng-repeat="x in s.slice(snum,snum+sn) track by $index">
             <div class="card h-100">
-              <a href="item.php?p={{x.id}}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <a href="item.php?p={{x.id}}"><img class="card-img-top" src="{{'uploads/'+x.m_img}}" alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
                   <a href="item.php?p={{x.id}}">{{x.item_name}}</a>

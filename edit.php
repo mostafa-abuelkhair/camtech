@@ -75,13 +75,24 @@ $d=$_GET["p"];
 
       <div class="card mt-4">
           <div class="card-body">
+
+            <div class="form-group">
+              <label for="usr">display image :</label>
+              <input type="file" name="upload2[]" />
+            </div>
+
             <div class="form-group">
               <label for="usr">item name :</label>
               <input type="text" class="form-control" name="item_name">
             </div>
 
+            <div class="form-group">
+              <label for="usr">price :</label>
+              <input class="form-control" type="text" name="price">
+            </div>
+
           <div class="form-group">
-            <label for="usr">item describtion :</label>
+            <label for="usr">item description :</label>
             <textarea class="form-control" rows="5" name="description"></textarea>
           </div>
 
