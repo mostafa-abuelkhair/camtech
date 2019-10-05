@@ -1,7 +1,13 @@
 <?php
+session_start();
 
 $d=$_GET["p"];
 if($d){$edit=true;}
+
+$uname=$_SESSION["uname"];
+
+if($uname == ''){exit("not allowed .... if you are admin try to login first"); }
+else{}
 
 if($edit){
 include 'db.php';
@@ -72,14 +78,22 @@ $p = json_encode($row);
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#"><img class="" style="width:40px;" src="logo.png" alt=""></a>
+      <a class="navbar-brand" href="index.php"><img class="" style="width:40px;" src="logo.png" alt=""></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
+          <?php
+
+          echo "<li class=\"nav-item\">
+                      <a class=\"nav-link\" style=\"color:orange;\" href=\"tasks.php?hint=out\">Log out
+                      </a>
+                    </li>";
+
+          ?>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home
+            <a class="nav-link" href="index.php">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -88,6 +102,8 @@ $p = json_encode($row);
     </div>
   </nav>
 <form action="upload.php?p=<?php echo $edit? $d:'new'  ?>" method="post" enctype="multipart/form-data">
+
+  <input type="text" name="imgs" style="visibility:hidden;" value="{{imgs.join('-')}}" />
 
 <div class="container">
   <div class="row">
@@ -135,7 +151,7 @@ $p = json_encode($row);
 
           <div class="form-group">
             <label for="usr">item description :</label>
-            <textarea class="form-control" rows="5" name="description">{{p.description}}</textarea>
+            <textarea class="form-control text-center" rows="5" name="description">{{p.description}}</textarea>
           </div>
 
         </div>
@@ -171,13 +187,13 @@ $p = json_encode($row);
         </div>
         <div class="card-body">
 
-          <textarea class="form-control" rows="15" name="details">{{p.details}}</textarea>
+          <textarea class="form-control text-center" rows="15" name="details">{{p.details}}</textarea>
 
         </div>
       </div>
 
       <div class="col text-center">
-        <button type="submit" class="btn btn-outline-dark" style="width:30%"><?php echo $edit? 'edit':'ok'; ?></button>
+        <button type="submit" class="btn btn-outline-dark" style="width:30%"><?php echo $edit? 'edit':'add new item'; ?></button>
       </div>
 
 
@@ -216,13 +232,13 @@ $scope.imgs=[];
 <?php
 if($edit){
 echo "\$scope.p=JSON.parse('$p');";
-echo "\$scope.imgs=\$scope.p.imgs.split('-')";
+echo "if(\$scope.p.imgs) {\$scope.imgs=\$scope.p.imgs.split('-')}";
 }
 ?>
 
 $scope.imn=[];
-
 });
+
 
 
 </script>

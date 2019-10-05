@@ -23,4 +23,6 @@ $scope.np=function(m){
   else{ $scope.snum= ($scope.snum-n<0)? 0:$scope.snum-n; }
 };
 
+$scope.lgo=function(m){location.replace(m);};
+
 });

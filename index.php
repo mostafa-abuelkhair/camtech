@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+$uname=$_SESSION["uname"] ;
+
+if($uname == ''){$admin=false;}
+else{$admin=true;}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,6 +49,14 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
+          <?php
+          if($admin){
+          echo "<li class=\"nav-item\">
+                      <a class=\"nav-link\" style=\"color:orange;\" href=\"tasks.php?hint=out\">Log out
+                      </a>
+                    </li>";
+          }
+          ?>
           <li class="nav-item active">
             <a class="nav-link" href="#">Home
               <span class="sr-only">(current)</span>
@@ -62,13 +80,13 @@
 
       <div class="col-lg-3">
 
-        <h1 class="my-4">Cam Tech</h1>
-        <div class="list-group">
+        <h1 class="my-4">Cam Tech </h1>
+        <?php /*<div class="list-group">
           <a href="#" class="list-group-item">Category 1</a>
           <a href="#" class="list-group-item">Category 2</a>
           <a href="#" class="list-group-item">Category 3</a>
-        </div>
-
+          </div>*/
+        ?>
       </div>
       <!-- /.col-lg-3 -->
 
@@ -80,9 +98,10 @@
           </ol>
           <div class="carousel-inner caru" role="listbox">
 
-            <div class="carousel-item {{$index==0 ? 'active': ''}} " ng-repeat="x in bn track by $index">
+            <div class="carousel-item {{$index==0 ? 'active': ''}}" style="height:100%;cursor:pointer" ng-click="lgo('item.php?p='+x.id)" ng-repeat="x in bn track by $index">
+
               <a href="item.php?p={{x.id}}"><img class="cimg" src="{{'uploads/'+x.banner_img}}"  alt=""></a>
-            
+
             </div>
 
           </div>
@@ -96,16 +115,18 @@
           </a>
         </div>
 
-        <div class="row">
+        <?php if($admin){ echo "<a href=\"edit.php\"><button   class=\"btn btn-warning\"  > ADD NEW ITEM </button></a>";} ?>
+
+        <div class="row text-center">
 
           <div class="col-lg-4 col-md-6 mb-4" ng-repeat="x in s.slice(snum,snum+sn) track by $index">
             <div class="card h-100">
-              <a href="item.php?p={{x.id}}"><img class="card-img-top" src="{{'uploads/'+x.m_img}}" alt=""></a>
+              <a href="item.php?p={{x.id}}"><img class="card-img-top ccimg" src="{{'uploads/'+x.m_img}}" alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
                   <a href="item.php?p={{x.id}}">{{x.item_name}}</a>
                 </h4>
-                <h5>${{x.price}}</h5>
+                <h5>{{x.price}}</h5>
                 <p class="card-text">{{x.description}}</p>
               </div>
               <div class="card-footer">

@@ -1,10 +1,16 @@
 <?php
 
+$d=$_GET["p"];
+
+if($d=="new"){$edit=false;}
+else{$edit=true;}
+
 $item_name=$_POST["item_name"];
 $price=$_POST["price"];
 $description=$_POST["description"];
 $banner=$_POST["banner"]=='on'? 1:0;
 $details=$_POST["details"];
+$imgse=$_POST["imgs"];
 
 include 'db.php';
 
@@ -63,7 +69,36 @@ $tmpFilePath = $_FILES['upload2']['tmp_name'][1];
  }
 }
 
+if($edit){
+
+$imgss= (strlen($imgs) > 0? $imgs.'-':'') . ((strlen($imgse)>0)? $imgse:'');
+
+$conn->query("UPDATE systems
+SET item_name = '$item_name', price = '$price' , description = '$description' , banner = '$banner' ,
+details = '$details' , imgs = '$imgss'
+WHERE id = $d;");
+
+if($banner_img != ''){
+  $conn->query("UPDATE systems
+  SET banner_img = '$banner_img'
+  WHERE id = $d;");
+}
+
+if($m_img != ''){
+  $conn->query("UPDATE systems
+  SET m_img = '$m_img'
+  WHERE id = $d;");
+}
+
+}
+
+
+else{
+
 $conn->query("INSERT INTO systems (item_name, price , description, banner, details, m_img ,imgs ,banner_img)
 VALUES ('$item_name', '$price', '$description', '$banner' ,'$details','$m_img' ,'$imgs' ,'$banner_img');");
 
+}
+
+echo "<script>location.replace('index.php');</script>";
 ?>

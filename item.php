@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+$uname=$_SESSION["uname"] ;
+
+if($uname == ''){$admin=false;}
+else{$admin=true;}
+
 
 $d=$_GET["p"];
 
@@ -52,19 +59,25 @@ $p = json_encode($row)
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#"><img class="" style="width:40px;" src="logo.png" alt=""></a>
+      <a class="navbar-brand" href="index.php"><img class="" style="width:40px;" src="logo.png" alt=""></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
+          <?php
+          if($admin){
+          echo "<li class=\"nav-item\">
+                      <a class=\"nav-link\" style=\"color:orange;\" href=\"tasks.php?hint=out\">Log out
+                      </a>
+                    </li>";
+          }
+          ?>
+          
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home
+            <a class="nav-link" href="index.php">Home
               <span class="sr-only">(current)</span>
             </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#contact">Contact</a>
@@ -73,6 +86,14 @@ $p = json_encode($row)
       </div>
     </div>
   </nav>
+
+
+  <?php if($admin){
+     echo "<a href=\"edit.php?p=$d\"><button class=\"btn btn-primary ab\" > Edit this item </button></a>";
+     echo "<a href=\"tasks.php?p=$d&hint=rm\"><button class=\"btn btn-danger ab\" > remove this item </button></a>";
+
+   }?>
+
 
   <!-- Page Content -->
   <div class="container">
@@ -85,7 +106,7 @@ $p = json_encode($row)
         <div class="card mt-4">
           <div class="card-header ih" >
 
-            <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+            <div id="carouselExampleIndicators" style="height:100%;" class="carousel slide my-4" data-ride="carousel">
               <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="{{$index}}" class="{{$index==0 ? 'active': ''}}" ng-repeat="x in p.imgs.split('-') track by $index"></li>
               </ol>
@@ -111,9 +132,9 @@ $p = json_encode($row)
           </div>
           <div class="card-body">
             <h3 class="card-title">{{p.item_name}}</h3>
-            <h4>جنيه {{p.price}}</h4>
-            <p class="card-text">{{p.description}}</p>
-            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+            <h4> {{p.price}}</h4>
+            <p class="card-text text-center">{{p.description}}</p>
+            <span class="text-warning ">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
             4.0 stars
           </div>
         </div>
@@ -124,7 +145,7 @@ $p = json_encode($row)
             Product details
           </div>
           <div class="card-body">
-            <p>{{p.details}}</p>
+            <p class="text-center">{{p.details}}</p>
 
           </div>
         </div>
