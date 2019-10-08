@@ -3,6 +3,7 @@ session_start();
 
 $d=$_GET["p"];
 if($d){$edit=true;}
+else{$edit=false;}
 
 $uname=$_SESSION["uname"];
 
@@ -78,7 +79,7 @@ $p = json_encode($row);
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.php"><img class="" style="width:40px;" src="logo.png" alt=""></a>
+      <a class="navbar-brand" href="index.php"><img class="" style="width:40px;" src="logo.png" alt=""> Cam Tech</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -231,7 +232,7 @@ $scope.imgs=[];
 
 <?php
 if($edit){
-echo "\$scope.p=JSON.parse('$p');";
+echo "\$scope.p=JSON.parse('$p'.replace(/[\u0000-\u0019]+/g,''));";
 echo "if(\$scope.p.imgs) {\$scope.imgs=\$scope.p.imgs.split('-')}";
 }
 ?>

@@ -1,8 +1,37 @@
 body {
   padding-top: 56px;
 }
+
+.jumbotron {
+  background-color: #f4511e; /* Orange */
+  color: #ffffff;
+}
 .pointer {cursor: pointer;}
 
+.abb {
+    padding: 60px 50px;
+  }
+  .bg-grey {
+    background-color: #f6f6f6;
+  }
+  .logo {
+    font-size: 200px;
+  }
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+  }
+
+  .fa-facebook{
+    padding: 20px;
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+
+  }
 .cimg{width:900px;height:300px;object-fit: contain;}
 
 .ccimg{width:100%;height:150px;object-fit: contain;}

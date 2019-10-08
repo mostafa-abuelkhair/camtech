@@ -15,7 +15,7 @@ app.controller('ctrl', function($scope,$rootScope,$http) {
 
 $scope.snum=0;
 
-$scope.sn=9;
+$scope.sn=6;
 
 $scope.np=function(m){
   var n=$scope.sn;
