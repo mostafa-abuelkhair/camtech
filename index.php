@@ -128,11 +128,11 @@ else{$admin=true;}
           <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="{{$index}}" class="{{$index==0 ? 'active': ''}}" ng-repeat="x in bn track by $index"></li>
           </ol>
-          <div class="carousel-inner caru" role="listbox">
+          <div class="carousel-inner" role="listbox">
 
             <div class="carousel-item {{$index==0 ? 'active': ''}}" style="height:100%;cursor:pointer" ng-click="lgo('item.php?p='+x.id)" ng-repeat="x in bn track by $index">
 
-              <a href="item.php?p={{x.id}}"><img class="cimg" src="{{'uploads/'+x.banner_img}}"  alt=""></a>
+              <a href="item.php?p={{x.id}}"><img class="cimg2" src="{{'uploads/'+x.banner_img}}"  alt=""></a>
 
             </div>
 
