@@ -19,25 +19,26 @@ else{$admin=true;}
   <title>Cam Tech</title>
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="srcs/bootstrap/4.3.1/css/bootstrap.min.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="srcs/jquery.min.js"></script>
 
 <!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="srcs/popper.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="srcs/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="srcs/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>
 
-<script src="index.js"></script>
+
   <!-- Custom styles for this template -->
   <link href="index.css" rel="stylesheet">
-
+  <script src="index.js"></script>
 </head>
 
 <body  ng-app="app" ng-controller="ctrl" style="background:#f0f0f5">
@@ -76,27 +77,27 @@ else{$admin=true;}
   </nav>
 
 
-  <div class="jumbotron text-center" style="margin-bottom:0;background:#6a67ce;">
-    <h1>Cam tech</h1>
-    <p>لانظمة المراقبه</p>
+  <div class="jumbotron text-center head">
+    <h1 >Cam Tech</h1>
+    <p>لأنظمة المراقبة</p>
   </div>
 
   <!-- Container (About Section) -->
   <section class="about py-5" id="about" style="background:#e9ecef">
-:	<div class="container py-lg-5 py-sm-3">
+	<div class="container py-lg-5 py-sm-3">
 		<div class="row">
 			<div class="col-lg-3 about-left">
 				<h3 class="mb-lg-5 mb-4">About us</h3>
 			</div>
-			<div class="col-lg-5 col-md-7 about-text">
+			<div class="col-lg-9 col-md-7 about-text">
 				<h3> </h3>
-        <p class="mt-2">شركه رائدة في مجال أنظمة المراقبة
+        <p class="mt-2 aboutp">شركة رائدة في مجال أنظمة المراقبة
 وتملك سابقة اعمال قويه
 ونعمل بتكنولوجيا متطوره واسعار مناسبة
 لجميع الفئات شامل التركيب
 وماركات عالميه مشهور كفائتها</p>
-				<p class="mt-3">نقوم بتأمين اى مكان له باب ...سواء محلات ،أكشاك ، شركات ،فيلات ومنازل ،مخازن،مدارس حضانات ..نعمل بتكنولوجيا متطوره وبأسعار مناسبة جدا</p>
-				<p class="mt-2"> بنقدم حلول لكل الأماكن وعروضنا بتناسب أي مكان </p>
+				<p class="mt-3 aboutp">نقوم بتأمين اى مكان له باب ...سواء محلات ،أكشاك ، شركات ،فيلات ومنازل ،مخازن،مدارس حضانات ..نعمل بتكنولوجيا متطوره وبأسعار مناسبة جدا</p>
+				<p class="mt-2 aboutp"> بنقدم حلول لكل الأماكن وعروضنا بتناسب أي مكان </p>
 			</div>
 			<div class="col-lg-4 col-md-5 about-img">
 				<img src="images/1.png" alt="" class="img-fluid"/>
@@ -132,7 +133,7 @@ else{$admin=true;}
 
             <div class="carousel-item {{$index==0 ? 'active': ''}}" style="height:100%;cursor:pointer" ng-click="lgo('item.php?p='+x.id)" ng-repeat="x in bn track by $index">
 
-              <a href="item.php?p={{x.id}}"><img class="cimg2" src="{{'uploads/'+x.banner_img}}"  alt=""></a>
+              <a href="item.php?p={{x.id}}"><img class="icimg2" src="{{'uploads/'+x.banner_img}}"  alt=""></a>
 
             </div>
 

@@ -15,12 +15,14 @@ include 'db.php';
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
+$conn->set_charset("UTF8");
+
 $result = $conn->query("SELECT * FROM systems where id = $d");
 if(!empty($result)){
   $row = $result->fetch_assoc();
 }
 else{exit('PAGE NOT FOUND');}
-$p = json_encode($row);
+$p = json_encode($row, JSON_UNESCAPED_UNICODE);
 }
 
 ?>
@@ -35,19 +37,19 @@ $p = json_encode($row);
 
   <title>Cam Tech</title>
 
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="srcs/bootstrap/4.3.1/css/bootstrap.min.css">
+
 
 <!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="srcs/jquery.min.js"></script>
 
 <!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="srcs/popper.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="srcs/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="srcs/angular.min.js"></script>
 
 <script src="index.js"></script>
   <!-- Custom styles for this template -->
@@ -152,7 +154,7 @@ $p = json_encode($row);
 
           <div class="form-group">
             <label for="usr">item description :</label>
-            <textarea class="form-control text-center" rows="5" name="description">{{p.description}}</textarea>
+            <textarea class="form-control text-center" rows="5" name="description" style="white-space: pre-wrap;">{{p.description.replace('<br/>','\n\r')}}</textarea>
           </div>
 
         </div>
@@ -188,7 +190,7 @@ $p = json_encode($row);
         </div>
         <div class="card-body">
 
-          <textarea class="form-control text-center" rows="15" name="details">{{p.details}}</textarea>
+          <textarea class="form-control text-center" rows="15" name="details">{{p.details.replace('<br/>','\n\r')}}</textarea>
 
         </div>
       </div>
@@ -232,11 +234,10 @@ $scope.imgs=[];
 
 <?php
 if($edit){
-echo "\$scope.p=JSON.parse('$p'.replace(/[\u0000-\u0019]+/g,''));";
+echo "\$scope.p=JSON.parse('$p'.replace(/[\u0000-\u0019]+/g,'<br/>'));";
 echo "if(\$scope.p.imgs) {\$scope.imgs=\$scope.p.imgs.split('-')}";
 }
 ?>
-
 $scope.imn=[];
 });
 

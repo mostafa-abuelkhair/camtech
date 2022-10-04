@@ -8,6 +8,7 @@ include 'db.php';
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
+$conn->set_charset("UTF8");
 
 $result = $conn->query("SELECT * FROM systems");
 

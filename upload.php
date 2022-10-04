@@ -10,6 +10,7 @@ include 'db.php';
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
+$conn->set_charset("UTF8");
 
 $item_name=$_POST["item_name"];
 $price=$_POST["price"];
@@ -18,7 +19,11 @@ $banner=$_POST["banner"]=='on'? 1:0;
 $details=$_POST["details"];
 $imgse=$_POST["imgs"];
 $imgsa=[];
-$total = count($_FILES['upload']['name']);
+$total = 0;
+if (is_countable($_FILES['upload']['name'])){
+  $total = count($_FILES['upload']['name']);
+}
+
 
 // Loop through each file
 for( $i=0 ; $i < $total ; $i++ ) {

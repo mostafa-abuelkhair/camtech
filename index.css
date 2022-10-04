@@ -1,7 +1,19 @@
 body {
   padding-top: 56px;
 }
-
+.head h1 {
+  font-size: 80px;
+}
+.head p {
+  font-size: 30px;
+}
+.aboutp {
+  font-size: 25px;
+}
+.head{
+  margin-bottom:0;
+  background:orangered;
+}
 .jumbotron {
   background-color: #f4511e; /* Orange */
   color: #ffffff;
@@ -42,8 +54,8 @@ body {
 
 .ih{height:400px;overflow:scroll;}
 
-.cimg2{width:100%;height:350px;object-fit: contain;}
-
+.icimg2{width:100%;height:350px;object-fit:fill;}
+.cimg2{width:100%;height:350px;object-fit:contain;}
 
 .carousel-control-next,
 .carousel-control-prev {
@@ -60,3 +72,47 @@ body {
 
 
 .ab{ margin: 10px;}
+
+
+.ng-enter {
+  transition: 0.5s linear all;
+  opacity: 0;
+  transform: translate(0,-100%);
+}
+
+.ng-enter.ng-enter-active {
+  opacity: 1;
+  transform: translate(0,0);
+}
+.ng-leave {
+  transition: 0.5s linear all;
+  opacity: 1;
+
+}
+
+.ng-leave.ng-leave-active {
+  opacity: 0;
+  transform: rotateX(150deg);
+}
+.ng-hide-remove {
+    transition: 0.5s linear all;
+    opacity: 0;
+    transform: scale(0.1,0.1);
+}
+
+
+.ng-hide-remove-active {
+    opacity: 1;
+transform: scale(1,1);
+}
+.ng-hide-add {
+    transition: 0.5s linear all;
+    opacity: 1;
+transform: scale(1,1);
+}
+
+
+.ng-hide-add-active {
+    opacity: 0;
+transform: scale(0.1,0.1);
+}
