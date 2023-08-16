@@ -1,4 +1,6 @@
-var app = angular.module('app', ['ngAnimate']);
+AOS.init();
+
+var app = angular.module('app', []);
 
 app.run(function($rootScope) {
 
@@ -21,8 +23,12 @@ $scope.np=function(m){
   var n=$scope.sn;
   if(m){ $scope.snum= (($scope.snum+n)<$scope.s.length)? $scope.snum+n:$scope.snum; }
   else{ $scope.snum= ($scope.snum-n<0)? 0:$scope.snum-n; }
+  document.getElementById("products_cards").scrollIntoView();
 };
 
 $scope.lgo=function(m){location.replace(m);};
 
 });
+
+
+

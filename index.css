@@ -1,8 +1,19 @@
 body {
   padding-top: 56px;
 }
+
+.front img{
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  object-position: 50% 0%;
+}
+
 .head h1 {
   font-size: 80px;
+  letter-spacing: 10px;
+  font-weight: 900;
+  color: white;
 }
 .head p {
   font-size: 30px;
@@ -15,7 +26,7 @@ body {
   background:orangered;
 }
 .jumbotron {
-  background-color: #f4511e; /* Orange */
+  background-color: #212529ad;
   color: #ffffff;
 }
 .pointer {cursor: pointer;}
@@ -54,7 +65,7 @@ body {
 
 .ih{height:400px;overflow:scroll;}
 
-.icimg2{width:100%;height:350px;object-fit:fill;}
+.icimg2{width:100%;height:350px;object-fit:cover;}
 .cimg2{width:100%;height:350px;object-fit:contain;}
 
 .carousel-control-next,
@@ -72,6 +83,31 @@ body {
 
 
 .ab{ margin: 10px;}
+
+.prefoot{
+  position: relative;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  height: fit-content;
+}
+.prefoot::before{
+content: "";
+position: absolute;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+background-image: url("uploads/prefoot.jpg");
+background-position: center;
+filter: brightness(70%);
+z-index: -1;
+}
+.prefoot h1{
+  margin-bottom: 50px;
+}
+.prefoot p{
+  font-size: 20px;
+}
 
 
 .ng-enter {
@@ -116,3 +152,5 @@ transform: scale(1,1);
     opacity: 0;
 transform: scale(0.1,0.1);
 }
+
+

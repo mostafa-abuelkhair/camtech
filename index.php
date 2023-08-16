@@ -22,28 +22,16 @@ else{$admin=false;}
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="srcs/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="srcs/aos/dist_aos.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<!-- jQuery library -->
-<script src="srcs/jquery.min.js"></script>
-
-<!-- Popper JS -->
-<script src="srcs/popper.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="srcs/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-<script src="srcs/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>
-
-
   <!-- Custom styles for this template -->
   <link href="index.css" rel="stylesheet">
-  <script src="index.js"></script>
+
 </head>
 
-<body  ng-app="app" ng-controller="ctrl" style="background:#f0f0f5">
+<body   style="background:#f0f0f5">
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -71,6 +59,9 @@ else{$admin=false;}
             <a class="nav-link" href="#about">About</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="#products">Products</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="#contact">Contact</a>
           </li>
         </ul>
@@ -78,10 +69,13 @@ else{$admin=false;}
     </div>
   </nav>
 
+  <div class="front">
+    <img src="uploads/front.jpg" alt="">
+  </div>
 
-  <div class="jumbotron text-center head">
-    <h1 >Cam Tech</h1>
-    <p>لأنظمة المراقبة</p>
+  <div class="jumbotron text-center head" >
+    <h1 data-aos="zoom-in">Cam Tech</h1>
+    <p data-aos="zoom-in">لأنظمة المراقبة</p>
   </div>
 
   <!-- Container (About Section) -->
@@ -89,15 +83,16 @@ else{$admin=false;}
 	<div class="container py-lg-5 py-sm-3">
 		<div class="row">
 			<div class="col-lg-3 about-left">
-				<h3 class="mb-lg-5 mb-4">About us</h3>
+				<h3 class="mb-lg-5 mb-4" data-aos="fade-right">About us</h3>
 			</div>
-			<div class="col-lg-9 col-md-7 about-text">
+			<div class="col-lg-9 col-md-7 about-text" data-aos="fade-left">
 				<h3> </h3>
         <p class="mt-2 aboutp">شركة رائدة في مجال أنظمة المراقبة
-وتملك سابقة اعمال قويه
-ونعمل بتكنولوجيا متطوره واسعار مناسبة
-لجميع الفئات شامل التركيب
-وماركات عالميه مشهور كفائتها</p>
+            وتملك سابقة اعمال قويه
+            ونعمل بتكنولوجيا متطوره واسعار مناسبة
+            لجميع الفئات شامل التركيب
+            وماركات عالميه مشهور كفائتها
+        </p>
 				<p class="mt-3 aboutp">نقوم بتأمين اى مكان له باب ...سواء محلات ،أكشاك ، شركات ،فيلات ومنازل ،مخازن،مدارس حضانات ..نعمل بتكنولوجيا متطوره وبأسعار مناسبة جدا</p>
 				<p class="mt-2 aboutp"> بنقدم حلول لكل الأماكن وعروضنا بتناسب أي مكان </p>
 			</div>
@@ -109,7 +104,7 @@ else{$admin=false;}
 </section>
 
 
-  <div class="container" >
+  <div class="container" id="products" ng-app="app" ng-controller="ctrl" data-aos="fade-up-right"> 
 
     <div class="row">
 
@@ -152,7 +147,7 @@ else{$admin=false;}
 
         <?php if($admin){ echo "<a href=\"edit.php\"><button   class=\"btn btn-warning\"  > ADD NEW ITEM </button></a>";} ?>
 
-        <div class="row text-center">
+        <div class="row text-center" id="products_cards">
 
           <div class="col-lg-4 col-md-6 mb-4" ng-repeat="x in s.slice(snum,snum+sn) track by $index">
             <div class="card h-100">
@@ -188,37 +183,40 @@ else{$admin=false;}
   </div>
   <!-- /.container -->
 
+  <div class="jumbotron text-center prefoot" >
+    <h1 data-aos="zoom-in-down">ضمان أمان منزلك وعملك أصبح أسهل</h1>
+    <p data-aos="zoom-in-down"> مع تشكيلتنا المتميزة من أنظمة المراقبة! احصل على سلامة واطمئنان من خلال تقنية متقدمة تمنحك رؤية واضحة على مدار الساعة. لا تفوت فرصة حماية ممتلكاتك ومحبيك - زور محلنا اليوم واختر الحل الأمثل لمراقبة محيطك بكل يسر وسهولة</p>
+  </div>
+
   <!-- Footer -->
   <footer class="py-5 bg-dark text-white" id="contact">
-    <div class="container pt-lg-3">
-		<div class="row footer-top">
-			<div class="col-lg-4 col-sm-6 footer-grid-wthree">
-				<h4 class="footer-title text-uppercase mb-4">Who We Are</h4>
-				<div class="contact-info" style="color:#777">
-					<p>نقوم بتأمين اى مكان له باب ...سواء محلات ،أكشاك ، شركات ،فيلات ومنازل ،مخازن،مدارس حضانات ..نعمل بتكنولوجيا متطوره وبأسعار مناسبة جدا</p>
-				</div>
-			</div>
-<div class="col-lg-3 col-sm-6 footer-grid-wthree mt-sm-0 mt-4">
-</div>
-  <div class="col-lg-2 col-sm-6 footer-grid-wthree mt-lg-0 mt-sm-5 mt-4">
-  </div>
-			<div class=" col-lg-3 col-sm-6 footer-grid-wthree mt-lg-0 mt-sm-5 mt-4">
-				<h3 class="footer-title text-uppercase mb-4">Contact Us</h3>
-				<div class="contact-info" style="color:#777">
 
-					<div class="footer-style-w3ls my-3">
-						<h4 class="mb-2"><span class="fa mr-1 fa-phone"></span> Phone</h4>
-						<p>0123456789</p>
-					</div>
-					<div class="footer-style-w3ls">
-						<h4 class="mb-2"><span class="fa mr-1 fa-envelope-open"></span> Email</h4>
-						<p><a href="mailto:info@example.com">cam@yahoo.com</a></p>
-            <a href="https://www.facebook.com" class="fa fa-facebook"></a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="container pt-lg-3">
+
+      <div class="row footer-top">
+        <div class="col-lg-4 col-sm-6 footer-grid-wthree">
+          <h4 class="footer-title text-uppercase mb-4">Who We Are</h4>
+          <div class="contact-info" style="color:#777">
+            <p>نقوم بتأمين اى مكان له باب ...سواء محلات ،أكشاك ، شركات ،فيلات ومنازل ،مخازن،مدارس حضانات ..نعمل بتكنولوجيا متطوره وبأسعار مناسبة جدا</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 footer-grid-wthree mt-sm-0 mt-4"></div>
+        <div class=" col-lg-4 col-sm-6 footer-grid-wthree mt-lg-0 mt-sm-5 mt-4">
+              <h3 class="footer-title text-uppercase mb-4">Contact Us</h3>
+              <div class="contact-info" style="color:#777">
+
+                <div class="footer-style-w3ls my-3">
+                  <h4 class="mb-2"><span class="fa mr-1 fa-phone"></span> Phone</h4>
+                  <p>0123456789</p>
+                </div>
+                <div class="footer-style-w3ls">
+                  <h4 class="mb-2"><span class="fa mr-1 fa-envelope-open"></span> Email</h4>
+                  <p><a href="mailto:info@example.com">cam@cam.com</a></p>
+                  <a href="https://www.facebook.com" class="fa fa-facebook"></a>
+                </div>
+              </div>
+        </div>
+      </div>
 
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; cam tech</p>
@@ -228,5 +226,20 @@ else{$admin=false;}
 
 
 </body>
+
+<!-- jQuery library -->
+<script src="srcs/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="srcs/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="srcs/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script src="srcs/angular.min.js"></script>
+<script src="srcs/aos/dist_aos.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>
+
+<script src="index.js"></script>
 
 </html>
