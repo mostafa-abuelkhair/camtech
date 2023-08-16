@@ -1,10 +1,12 @@
 <?php
 session_start();
 
-$uname=$_SESSION["uname"] ;
 
-if($uname == ''){$admin=false;}
-else{$admin=true;}
+if (isset($_SESSION["uname"])){
+  $admin=true;
+  $uname=$_SESSION["uname"] ;
+}
+else{$admin=false;}
 
 ?>
 
@@ -206,12 +208,12 @@ else{$admin=true;}
 
 					<div class="footer-style-w3ls my-3">
 						<h4 class="mb-2"><span class="fa mr-1 fa-phone"></span> Phone</h4>
-						<p>0102 001 8274</p>
+						<p>0123456789</p>
 					</div>
 					<div class="footer-style-w3ls">
 						<h4 class="mb-2"><span class="fa mr-1 fa-envelope-open"></span> Email</h4>
-						<p><a href="mailto:info@example.com">ahmed.mohammed42@yahoo.com</a></p>
-            <a href="https://www.facebook.com/Cam-tech-%D9%84%D8%A5%D9%86%D8%B8%D9%85%D8%A9-%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D9%82%D8%A8%D8%A9-1360885514042769/" class="fa fa-facebook"></a>
+						<p><a href="mailto:info@example.com">cam@yahoo.com</a></p>
+            <a href="https://www.facebook.com" class="fa fa-facebook"></a>
 					</div>
 				</div>
 			</div>

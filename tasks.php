@@ -16,8 +16,8 @@ $conn->set_charset("UTF8");
 
 switch ($hint) {
   case 'out':
-  $_SESSION["uname"] = '';
-  $_SESSION["psw"] = '';
+  $_SESSION["uname"] = null;
+  $_SESSION["psw"] = null;
   echo "<script>location.replace('index.php');</script>";
     break;
 

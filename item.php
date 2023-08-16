@@ -1,10 +1,11 @@
 <?php
 session_start();
 
-$uname=$_SESSION["uname"] ;
-
-if($uname == ''){$admin=false;}
-else{$admin=true;}
+if (isset($_SESSION["uname"])){
+  $admin=true;
+  $uname=$_SESSION["uname"] ;
+}
+else{$admin=false;}
 
 
 $d=$_GET["p"];
