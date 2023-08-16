@@ -1,8 +1,12 @@
 <?php
 session_start();
 
-$d=$_GET["p"];
-if($d){$edit=true;}
+
+
+if(isset($_GET["p"])){
+  $edit=true;
+  $d=$_GET["p"];
+}
 else{$edit=false;}
 
 $uname=$_SESSION["uname"];
